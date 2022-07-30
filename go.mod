@@ -1,3 +1,3 @@
-module main.go
+module dndcli
 
 go 1.18
