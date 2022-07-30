@@ -44,7 +44,8 @@ func main() {
 		}
 	} else {
 		fmt.Println("Invalid dice")
-		fmt.Println("Usage: dice -d d6")
+		fmt.Println("Usage: dice -d <dice> -n <number of rolls> -s -adv -dis")
+		fmt.Println("Example: dice -d d20 -n 3 -s -adv")
 	}
 }
 
