@@ -21,7 +21,7 @@ func main() {
 	matched, _ := regexp.MatchString("d[0-9]+", *dice)
 
 	if matched {
-		rolls := rollDice(*dice, *numRoll)
+		rolls := rollDice(dice, numRoll)
 
 		// to avoid adding functions to our call stack, we will collect the rolls
 		// and print them all at once
@@ -32,15 +32,15 @@ func main() {
 	}
 }
 
-func rollDice(dice string, numRolls int) []int {
-	rolls := make([]int, numRolls)
+func rollDice(dice *string, numRolls *int) []int {
+	rolls := make([]int, *numRolls)
 
 	// get the number of sides
-	diceSides := regexp.MustCompile("[0-9]+").FindString(dice)
+	diceSides := regexp.MustCompile("[0-9]+").FindString(*dice)
 
 	sides, _ := strconv.Atoi(diceSides)
 
-	for i := 0; i < numRolls; i++ {
+	for i := 0; i < *numRolls; i++ {
 		roll := rand.Intn(sides) + 1
 		rolls[i] = roll
 	}
