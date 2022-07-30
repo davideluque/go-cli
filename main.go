@@ -14,6 +14,7 @@ func main() {
 	rand.Seed(time.Now().UnixNano())
 
 	dice := flag.String("d", "d6", "dice to roll. e.g. d6, d10, d20, etc. default is d6")
+	numRoll := flag.Int("n", 1, "number of rolls. default is 1")
 
 	flag.Parse()
 
@@ -25,9 +26,10 @@ func main() {
 		// Cast diceSides to int and roll the dice
 		sides, _ := strconv.Atoi(diceSides)
 
-		roll := rand.Intn(sides) + 1
-
-		fmt.Println("You rolled a", roll)
+		for i := 0; i < *numRoll; i++ {
+			roll := rand.Intn(sides) + 1
+			fmt.Println("You rolled a", roll)
+		}
 	} else {
 		fmt.Println("Invalid dice")
 		fmt.Println("Usage: dice -d d6")
